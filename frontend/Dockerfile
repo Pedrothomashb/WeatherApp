@@ -1,7 +1,8 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 COPY package.json ./
-RUN npm install
+RUN npm install --ignore-scripts
+RUN chmod +x node_modules/.bin/vite
 COPY . .
 RUN npm run build
 
