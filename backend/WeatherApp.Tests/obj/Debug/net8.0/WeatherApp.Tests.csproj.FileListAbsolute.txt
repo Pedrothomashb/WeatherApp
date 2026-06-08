@@ -1,0 +1,7 @@
+C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Tests\bin\Debug\net8.0\CoverletSourceRootsMapping_WeatherApp.Tests
+C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Tests\obj\Debug\net8.0\WeatherApp.Tests.csproj.AssemblyReference.cache
+C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Tests\obj\Debug\net8.0\MvcTestingAppManifest.json
+C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Tests\obj\Debug\net8.0\WeatherApp.Tests.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Tests\obj\Debug\net8.0\WeatherApp.Tests.AssemblyInfoInputs.cache
+C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Tests\obj\Debug\net8.0\WeatherApp.Tests.AssemblyInfo.cs
+C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Tests\obj\Debug\net8.0\WeatherApp.Tests.csproj.CoreCompileInputs.cache

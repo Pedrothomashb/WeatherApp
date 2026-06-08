@@ -1,0 +1,281 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\models\\city.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\providers\\fakeweatherprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\providers\\fakeweatherprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\models\\temperaturerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\models\\temperaturerecord.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\middleware\\exceptionmiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\dtos\\weatherdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\dtos\\weatherdtos.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\data\\weatherdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\data\\weatherdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\controllers\\weathercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\controllers\\weathercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|WeatherApp.Tests\\WeatherApp.Tests.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.tests\\unit\\weatherservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{B2C3D4E5-F6A7-8901-BCDE-F12345678901}|WeatherApp.Tests\\WeatherApp.Tests.csproj|solutionrelative:weatherapp.tests\\unit\\weatherservicetests.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\services\\weatherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\services\\weatherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\providers\\iweatherprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\providers\\iweatherprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\providers\\weatherdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\providers\\weatherdata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\providers\\openweathermapprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\providers\\openweathermapprovider.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\repositories\\weatherrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\repositories\\weatherrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|c:\\users\\pc\\downloads\\weatherapp\\backend\\weatherapp.api\\services\\iweatherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1B2C3D4-E5F6-7890-ABCD-EF1234567890}|WeatherApp.Api\\WeatherApp.Api.csproj|solutionrelative:weatherapp.api\\services\\iweatherservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 4,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{c6f34f0d-7ae5-4f3a-be61-fe0c21ae9eb8}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "TemperatureRecord.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Models\\TemperatureRecord.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Models\\TemperatureRecord.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Models\\TemperatureRecord.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Models\\TemperatureRecord.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T01:48:06.36Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "City.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Models\\City.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Models\\City.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Models\\City.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Models\\City.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T01:48:04.096Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ExceptionMiddleware.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Middleware\\ExceptionMiddleware.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Middleware\\ExceptionMiddleware.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Middleware\\ExceptionMiddleware.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Middleware\\ExceptionMiddleware.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T01:47:53.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "WeatherDTOs.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\DTOs\\WeatherDTOs.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\DTOs\\WeatherDTOs.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\DTOs\\WeatherDTOs.cs",
+              "RelativeToolTip": "WeatherApp.Api\\DTOs\\WeatherDTOs.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T01:47:52.473Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "WeatherDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Data\\WeatherDbContext.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Data\\WeatherDbContext.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Data\\WeatherDbContext.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Data\\WeatherDbContext.cs",
+              "ViewState": "AgIAABMAAAAAAAAAAAAkwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T01:47:49.506Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FakeWeatherProvider.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Providers\\FakeWeatherProvider.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Providers\\FakeWeatherProvider.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Providers\\FakeWeatherProvider.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Providers\\FakeWeatherProvider.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAQwA8AAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T01:01:15.209Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IWeatherProvider.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Providers\\IWeatherProvider.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Providers\\IWeatherProvider.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Providers\\IWeatherProvider.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Providers\\IWeatherProvider.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAuwAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T01:01:25.106Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WeatherServiceTests.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Tests\\Unit\\WeatherServiceTests.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Tests\\Unit\\WeatherServiceTests.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Tests\\Unit\\WeatherServiceTests.cs",
+              "RelativeToolTip": "WeatherApp.Tests\\Unit\\WeatherServiceTests.cs",
+              "ViewState": "AgIAAE4AAAAAAAAAAAArwFsAAAAqAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T23:55:23.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "WeatherService.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Services\\WeatherService.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Services\\WeatherService.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Services\\WeatherService.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Services\\WeatherService.cs",
+              "ViewState": "AgIAACIAAAAAAAAAAAD4vyoAAAAnAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T23:52:21.246Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Program.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Program.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Program.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEgAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T23:52:14.005Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "WeatherController.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Controllers\\WeatherController.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Controllers\\WeatherController.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Controllers\\WeatherController.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Controllers\\WeatherController.cs",
+              "ViewState": "AgIAACoAAAAAAAAAAAAYwAUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T23:52:57.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OpenWeatherMapProvider.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Providers\\OpenWeatherMapProvider.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Providers\\OpenWeatherMapProvider.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Providers\\OpenWeatherMapProvider.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Providers\\OpenWeatherMapProvider.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T01:01:33.878Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "WeatherData.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Providers\\WeatherData.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Providers\\WeatherData.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Providers\\WeatherData.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Providers\\WeatherData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-08T01:01:39.207Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "WeatherRepository.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Repositories\\WeatherRepository.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Repositories\\WeatherRepository.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Repositories\\WeatherRepository.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Repositories\\WeatherRepository.cs",
+              "ViewState": "AgIAAB8AAAAAAAAAAAAkwBYAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T23:52:42.155Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "IWeatherService.cs",
+              "DocumentMoniker": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Services\\IWeatherService.cs",
+              "RelativeDocumentMoniker": "WeatherApp.Api\\Services\\IWeatherService.cs",
+              "ToolTip": "C:\\Users\\Pc\\Downloads\\weatherapp\\backend\\WeatherApp.Api\\Services\\IWeatherService.cs",
+              "RelativeToolTip": "WeatherApp.Api\\Services\\IWeatherService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-06-07T23:52:37.22Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
