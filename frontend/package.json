@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vite build",
     "preview": "vite preview"
   },
   "dependencies": {
@@ -17,8 +17,8 @@
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.0.0",
-    "typescript": "^5.3.0",
+    "typescript": "^5.3.3",
     "vite": "^5.0.0",
-    "vue-tsc": "^1.8.0"
+    "vue-tsc": "^1.8.27"
   }
 }

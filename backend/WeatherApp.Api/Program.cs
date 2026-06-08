@@ -66,22 +66,26 @@ builder.Services.AddScoped<IWeatherService, WeatherService>();
 
 var app = builder.Build();
 
-// Auto-migrate on startup
+// Auto-migrate only when using a real relational database (not InMemory used in tests)
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<WeatherDbContext>();
-    db.Database.Migrate();
+    if (db.Database.IsRelational())
+    {
+        db.Database.Migrate();
+    }
+    else
+    {
+        db.Database.EnsureCreated();
+    }
 }
 
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseCors();
 
-if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
-{
-    app.UseSwagger();
-    app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherApp v1"));
-}
+app.UseSwagger();
+app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherApp v1"));
 
 app.MapControllers();
 app.MapHealthChecks("/health");
