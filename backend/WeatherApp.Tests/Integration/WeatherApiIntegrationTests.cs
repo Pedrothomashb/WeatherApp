@@ -12,35 +12,41 @@ using Xunit;
 
 namespace WeatherApp.Tests.Integration;
 
-public class WeatherApiIntegrationTests : IClassFixture<WebApplicationFactory<Program>>
+// Shared factory so all tests in this class use the same in-memory database instance
+public class WeatherApiFactory : WebApplicationFactory<Program>
+{
+    private readonly string _dbName = "TestDb_" + Guid.NewGuid();
+
+    protected override void ConfigureWebHost(Microsoft.AspNetCore.Hosting.IWebHostBuilder builder)
+    {
+        builder.ConfigureServices(services =>
+        {
+            services.RemoveAll<DbContextOptions<WeatherDbContext>>();
+            services.RemoveAll<WeatherDbContext>();
+
+            services.AddDbContext<WeatherDbContext>(opts =>
+                opts.UseInMemoryDatabase(_dbName));
+
+            // Remove DbContext health check (incompatible with InMemory)
+            var healthDescriptor = services.SingleOrDefault(d =>
+                d.ServiceType.FullName != null &&
+                d.ServiceType.FullName.Contains("HealthCheck") &&
+                d.ServiceType.FullName.Contains("DbContext"));
+            if (healthDescriptor != null) services.Remove(healthDescriptor);
+
+            services.RemoveAll<IWeatherProvider>();
+            services.AddSingleton<IWeatherProvider, FakeWeatherProvider>();
+        });
+    }
+}
+
+public class WeatherApiIntegrationTests : IClassFixture<WeatherApiFactory>
 {
     private readonly HttpClient _client;
 
-    public WeatherApiIntegrationTests(WebApplicationFactory<Program> factory)
+    public WeatherApiIntegrationTests(WeatherApiFactory factory)
     {
-        _client = factory.WithWebHostBuilder(builder =>
-        {
-            builder.ConfigureServices(services =>
-            {
-                // Replace PostgreSQL with InMemory for tests
-                services.RemoveAll<DbContextOptions<WeatherDbContext>>();
-                services.RemoveAll<WeatherDbContext>();
-
-                services.AddDbContext<WeatherDbContext>(opts =>
-                    opts.UseInMemoryDatabase("TestDb_" + Guid.NewGuid()));
-
-                // Remove DbContext health check (incompatible with InMemory)
-                var healthDescriptor = services.SingleOrDefault(d =>
-                    d.ServiceType.FullName != null &&
-                    d.ServiceType.FullName.Contains("HealthCheck") &&
-                    d.ServiceType.FullName.Contains("DbContext"));
-                if (healthDescriptor != null) services.Remove(healthDescriptor);
-
-                // Always use Fake provider in tests
-                services.RemoveAll<IWeatherProvider>();
-                services.AddSingleton<IWeatherProvider, FakeWeatherProvider>();
-            });
-        }).CreateClient();
+        _client = factory.CreateClient();
     }
 
     [Fact]
@@ -89,7 +95,7 @@ public class WeatherApiIntegrationTests : IClassFixture<WebApplicationFactory<Pr
     [Fact]
     public async Task GET_history_ShouldReturnEmpty_WhenNoCityRegistered()
     {
-        var response = await _client.GetAsync("/api/weather/history?city=CidadeInexistente");
+        var response = await _client.GetAsync("/api/weather/history?city=CidadeQueNuncaExistiu");
 
         response.StatusCode.Should().Be(HttpStatusCode.OK);
 
@@ -109,9 +115,13 @@ public class WeatherApiIntegrationTests : IClassFixture<WebApplicationFactory<Pr
     [Fact]
     public async Task GET_history_ShouldReturnRecords_AfterRegistration()
     {
-        await _client.PostAsJsonAsync("/api/weather/city", new { cityName = "Porto Alegre" });
+        // Use a unique city name to avoid interference from other tests
+        var city = "HistoryTestCity_" + Guid.NewGuid().ToString("N")[..8];
 
-        var response = await _client.GetAsync("/api/weather/history?city=Porto+Alegre");
+        var post = await _client.PostAsJsonAsync("/api/weather/city", new { cityName = city });
+        post.StatusCode.Should().Be(HttpStatusCode.OK);
+
+        var response = await _client.GetAsync($"/api/weather/history?city={Uri.EscapeDataString(city)}");
         response.StatusCode.Should().Be(HttpStatusCode.OK);
 
         var body = await response.Content.ReadFromJsonAsync<HistoryResponse>();
