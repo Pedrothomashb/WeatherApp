@@ -124,3 +124,4 @@ C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Api\obj\Debug\net8.0\refint\
 C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Api\obj\Debug\net8.0\WeatherApp.Api.pdb
 C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Api\obj\Debug\net8.0\WeatherApp.Api.genruntimeconfig.cache
 C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Api\obj\Debug\net8.0\ref\WeatherApp.Api.dll
+C:\Users\Pc\Downloads\weatherapp\backend\WeatherApp.Api\obj\Debug\net8.0\WeatherApp.Api.sourcelink.json
