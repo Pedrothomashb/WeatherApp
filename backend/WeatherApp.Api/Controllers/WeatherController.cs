@@ -89,10 +89,10 @@ public class WeatherController : ControllerBase
     [ProducesResponseType(typeof(HistoryResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetHistory(
-        [FromQuery] string? pCity,
-        [FromQuery] decimal? pLat,
-        [FromQuery] decimal? pLon,
-        CancellationToken pCt)
+    [FromQuery(Name = "city")] string? pCity,
+    [FromQuery(Name = "lat")] decimal? pLat,
+    [FromQuery(Name = "lon")] decimal? pLon,
+    CancellationToken pCt)
     {
         if (string.IsNullOrWhiteSpace(pCity) && (!pLat.HasValue || !pLon.HasValue))
         {

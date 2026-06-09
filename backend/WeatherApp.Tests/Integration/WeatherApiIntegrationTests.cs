@@ -127,8 +127,8 @@ public class WeatherApiIntegrationTests : IClassFixture<WeatherApiFactory>
         HttpResponseMessage objResponse = await objClient.GetAsync($"/api/weather/history?city={Uri.EscapeDataString(strCity)}");
         objResponse.StatusCode.Should().Be(HttpStatusCode.OK);
 
-        var body = await objResponse.Content.ReadFromJsonAsync<HistoryResponse>();
-        body!.pRecords.Should().HaveCountGreaterThan(0);
+        HistoryResponse? objBody = await objResponse.Content.ReadFromJsonAsync<HistoryResponse>();
+        objBody!.pRecords.Should().HaveCountGreaterThan(0);
     }
 
     [Fact]
