@@ -9,9 +9,13 @@ namespace WeatherApp.Api.Migrations
     public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
-        protected override void Up(MigrationBuilder migrationBuilder)
+        /// <summary>
+        /// Ele contem as instruções para criar tabelas, adicionar colunas, criar índices, etc.
+        /// </summary>
+        /// <param name="pMigrationBuilder">Objeto builder</param>
+        protected override void Up(MigrationBuilder pMigrationBuilder)
         {
-            migrationBuilder.CreateTable(
+            pMigrationBuilder.CreateTable(
                 name: "Cities",
                 columns: table => new
                 {
@@ -26,7 +30,7 @@ namespace WeatherApp.Api.Migrations
                     table.PrimaryKey("PK_Cities", x => x.Id);
                 });
 
-            migrationBuilder.CreateTable(
+            pMigrationBuilder.CreateTable(
                 name: "TemperatureRecords",
                 columns: table => new
                 {
@@ -50,34 +54,38 @@ namespace WeatherApp.Api.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateIndex(
+            pMigrationBuilder.CreateIndex(
                 name: "IX_Cities_Latitude_Longitude",
                 table: "Cities",
                 columns: new[] { "Latitude", "Longitude" });
 
-            migrationBuilder.CreateIndex(
+            pMigrationBuilder.CreateIndex(
                 name: "IX_Cities_Name",
                 table: "Cities",
                 column: "Name");
 
-            migrationBuilder.CreateIndex(
+            pMigrationBuilder.CreateIndex(
                 name: "IX_TemperatureRecords_CityId_RecordedAt",
                 table: "TemperatureRecords",
                 columns: new[] { "CityId", "RecordedAt" });
 
-            migrationBuilder.CreateIndex(
+            pMigrationBuilder.CreateIndex(
                 name: "IX_TemperatureRecords_RecordedAt",
                 table: "TemperatureRecords",
                 column: "RecordedAt");
         }
 
         /// <inheritdoc />
-        protected override void Down(MigrationBuilder migrationBuilder)
+        /// <summary>
+        /// Usado quando quer voltar o banco para o estado anterior
+        /// </summary>
+        /// <param name="pMigrationBuilder">Objeto builder</param>
+        protected override void Down(MigrationBuilder pMigrationBuilder)
         {
-            migrationBuilder.DropTable(
+            pMigrationBuilder.DropTable(
                 name: "TemperatureRecords");
 
-            migrationBuilder.DropTable(
+            pMigrationBuilder.DropTable(
                 name: "Cities");
         }
     }

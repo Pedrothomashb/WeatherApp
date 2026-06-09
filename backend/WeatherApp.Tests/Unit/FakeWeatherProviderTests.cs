@@ -15,12 +15,12 @@ public class FakeWeatherProviderTests
     [InlineData("CidadeDesconhecida")]
     public async Task GetByCity_ShouldReturnValidData(string cityName)
     {
-        var result = await _provider.GetByCity(cityName);
+        WeatherData objResult = await _provider.GetByCity(cityName);
 
-        result.Should().NotBeNull();
-        result.Temperature.Should().BeInRange(-20m, 50m);
-        result.ProviderName.Should().Be("FakeProvider");
-        result.CityName.Should().NotBeNullOrEmpty();
+        objResult.Should().NotBeNull();
+        objResult.pTemperature.Should().BeInRange(-20m, 50m);
+        objResult.pRoviderName.Should().Be("FakeProvider");
+        objResult.pCityName.Should().NotBeNullOrEmpty();
     }
 
     [Theory]
@@ -29,11 +29,11 @@ public class FakeWeatherProviderTests
     [InlineData(0.0, 0.0)]
     public async Task GetByCoordinates_ShouldReturnValidData(double lat, double lon)
     {
-        var result = await _provider.GetByCoordinates((decimal)lat, (decimal)lon);
+        WeatherData objResult = await _provider.GetByCoordinates((decimal)lat, (decimal)lon);
 
-        result.Should().NotBeNull();
-        result.Temperature.Should().BeInRange(-20m, 50m);
-        result.ProviderName.Should().Be("FakeProvider");
+        objResult.Should().NotBeNull();
+        objResult.pTemperature.Should().BeInRange(-20m, 50m);
+        objResult.pRoviderName.Should().Be("FakeProvider");
     }
 
     [Fact]

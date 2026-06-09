@@ -4,7 +4,7 @@ namespace WeatherApp.Api.Services;
 
 public interface IWeatherService
 {
-    Task<TemperatureResponse> RegisterByCity(string cityName, CancellationToken ct = default);
-    Task<TemperatureResponse> RegisterByCoordinates(decimal latitude, decimal longitude, CancellationToken ct = default);
-    Task<HistoryResponse> GetHistory(string? cityName, decimal? latitude, decimal? longitude, CancellationToken ct = default);
+    Task<TemperatureResponse> RegisterByCity(string pCityName, CancellationToken pCt = default);
+    Task<TemperatureResponse> RegisterByCoordinates(decimal pLatitude, decimal pLongitude, CancellationToken pCt = default);
+    Task<HistoryResponse> GetHistory(string? pCityName, decimal? pLatitude, decimal? pLongitude, CancellationToken pCt = default);
 }

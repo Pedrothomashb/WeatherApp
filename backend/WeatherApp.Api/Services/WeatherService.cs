@@ -23,10 +23,10 @@ public class WeatherService : IWeatherService
         _logger.LogInformation("Registering temperature for city: {CityName}", cityName);
 
         var data = await _provider.GetByCity(cityName, ct);
-        var city = await _repository.UpsertCity(data.CityName, data.Latitude, data.Longitude, ct);
+        var city = await _repository.UpsertCity(data.pCityName, data.pLatitude, data.pLongitude, ct);
         var record = await SaveRecord(city.Id, data, ct);
 
-        return ToResponse(record, data.CityName);
+        return ToResponse(record, data.pCityName);
     }
 
     public async Task<TemperatureResponse> RegisterByCoordinates(decimal latitude, decimal longitude, CancellationToken ct = default)
@@ -34,10 +34,10 @@ public class WeatherService : IWeatherService
         _logger.LogInformation("Registering temperature for coordinates: {Lat}, {Lon}", latitude, longitude);
 
         var data = await _provider.GetByCoordinates(latitude, longitude, ct);
-        var city = await _repository.UpsertCity(data.CityName, data.Latitude ?? latitude, data.Longitude ?? longitude, ct);
+        var city = await _repository.UpsertCity(data.pCityName, data.pLatitude ?? latitude, data.pLongitude ?? longitude, ct);
         var record = await SaveRecord(city.Id, data, ct);
 
-        return ToResponse(record, data.CityName);
+        return ToResponse(record, data.pCityName);
     }
 
     public async Task<HistoryResponse> GetHistory(string? cityName, decimal? latitude, decimal? longitude, CancellationToken ct = default)
@@ -70,11 +70,11 @@ public class WeatherService : IWeatherService
         var record = new TemperatureRecord
         {
             CityId = cityId,
-            Temperature = data.Temperature,
-            FeelsLike = data.FeelsLike,
-            Humidity = data.Humidity,
-            Description = data.Description,
-            Provider = data.ProviderName,
+            Temperature = data.pTemperature,
+            FeelsLike = data.pFeelsLike,
+            Humidity = data.pHumidity,
+            Description = data.pDescription,
+            Provider = data.pRoviderName,
             RecordedAt = DateTime.UtcNow
         };
         return _repository.AddRecord(record, ct);

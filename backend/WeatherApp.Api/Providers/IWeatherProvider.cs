@@ -2,7 +2,10 @@ namespace WeatherApp.Api.Providers;
 
 public interface IWeatherProvider
 {
+    /// <summary>
+    /// Nome do provedor
+    /// </summary>
     string Name { get; }
-    Task<WeatherData> GetByCity(string cityName, CancellationToken ct = default);
-    Task<WeatherData> GetByCoordinates(decimal latitude, decimal longitude, CancellationToken ct = default);
+    Task<WeatherData> GetByCity(string pCityName, CancellationToken pCt = default);
+    Task<WeatherData> GetByCoordinates(decimal pLatitude, decimal pLongitude, CancellationToken pCt = default);
 }

@@ -6,21 +6,21 @@ using WeatherApp.Api.Providers;
 using WeatherApp.Api.Repositories;
 using WeatherApp.Api.Services;
 
-var builder = WebApplication.CreateBuilder(args);
+WebApplicationBuilder objBuilder = WebApplication.CreateBuilder(args);
 
 // Serilog
 Log.Logger = new LoggerConfiguration()
-    .ReadFrom.Configuration(builder.Configuration)
+    .ReadFrom.Configuration(objBuilder.Configuration)
     .Enrich.FromLogContext()
     .WriteTo.Console()
     .CreateLogger();
 
-builder.Host.UseSerilog();
+objBuilder.Host.UseSerilog();
 
 // Controllers + Swagger
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen(c =>
+objBuilder.Services.AddControllers();
+objBuilder.Services.AddEndpointsApiExplorer();
+objBuilder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new()
     {
@@ -28,69 +28,72 @@ builder.Services.AddSwaggerGen(c =>
         Version = "v1",
         Description = "API para registro e consulta de temperaturas por cidade ou coordenadas."
     });
-    var xmlFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
-    var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-    if (File.Exists(xmlPath)) c.IncludeXmlComments(xmlPath);
+    string strFile = $"{System.Reflection.Assembly.GetExecutingAssembly().GetName().Name}.xml";
+    string strPath = Path.Combine(AppContext.BaseDirectory, strFile);
+    if (File.Exists(strPath))
+    {
+        c.IncludeXmlComments(strPath);
+    }
 });
 
 // Database
-builder.Services.AddDbContext<WeatherDbContext>(options =>
-    options.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection")));
+objBuilder.Services.AddDbContext<WeatherDbContext>(options =>
+    options.UseNpgsql(objBuilder.Configuration.GetConnectionString("DefaultConnection")));
 
 // Health Checks
-builder.Services.AddHealthChecks()
+objBuilder.Services.AddHealthChecks()
     .AddDbContextCheck<WeatherDbContext>("database");
 
 // CORS (for Vue frontend)
-builder.Services.AddCors(options =>
+objBuilder.Services.AddCors(options =>
 {
     options.AddDefaultPolicy(policy =>
         policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
 });
 
 // Feature flag: choose provider via config ("OpenWeatherMap" or "Fake")
-var providerName = builder.Configuration["WeatherProviders:UseProvider"] ?? "Fake";
+string strProviderName = objBuilder.Configuration["WeatherProviders:UseProvider"] ?? "Fake";
 
-if (providerName == "OpenWeatherMap")
+if (strProviderName == "OpenWeatherMap")
 {
-    builder.Services.AddHttpClient<IWeatherProvider, OpenWeatherMapProvider>();
+    objBuilder.Services.AddHttpClient<IWeatherProvider, OpenWeatherMapProvider>();
 }
 else
 {
-    builder.Services.AddSingleton<IWeatherProvider, FakeWeatherProvider>();
+    objBuilder.Services.AddSingleton<IWeatherProvider, FakeWeatherProvider>();
 }
 
 // App services
-builder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
-builder.Services.AddScoped<IWeatherService, WeatherService>();
+objBuilder.Services.AddScoped<IWeatherRepository, WeatherRepository>();
+objBuilder.Services.AddScoped<IWeatherService, WeatherService>();
 
-var app = builder.Build();
+WebApplication objApp = objBuilder.Build();
 
 // Auto-migrate only when using a real relational database (not InMemory used in tests)
-using (var scope = app.Services.CreateScope())
+using (IServiceScope objScope = objApp.Services.CreateScope())
 {
-    var db = scope.ServiceProvider.GetRequiredService<WeatherDbContext>();
-    if (db.Database.IsRelational())
+    WeatherDbContext objDb = objScope.ServiceProvider.GetRequiredService<WeatherDbContext>();
+    if (objDb.Database.IsRelational())
     {
-        db.Database.Migrate();
+        await objDb.Database.MigrateAsync();
     }
     else
     {
-        db.Database.EnsureCreated();
+        await objDb.Database.EnsureCreatedAsync();
     }
 }
 
-app.UseMiddleware<ExceptionMiddleware>();
+objApp.UseMiddleware<ExceptionMiddleware>();
 
-app.UseCors();
+objApp.UseCors();
 
-app.UseSwagger();
-app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherApp v1"));
+objApp.UseSwagger();
+objApp.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "WeatherApp v1"));
 
-app.MapControllers();
-app.MapHealthChecks("/health");
+objApp.MapControllers();
+objApp.MapHealthChecks("/health");
 
-app.Run();
+await objApp.RunAsync();
 
 // Needed for integration tests
 public partial class Program { }

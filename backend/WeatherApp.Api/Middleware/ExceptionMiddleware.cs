@@ -5,42 +5,60 @@ namespace WeatherApp.Api.Middleware;
 
 public class ExceptionMiddleware
 {
-    private readonly RequestDelegate _next;
-    private readonly ILogger<ExceptionMiddleware> _logger;
+    /// <summary>
+    /// Proximo passo no pipeline de requisição
+    /// </summary>
+    private readonly RequestDelegate objNext;
+    /// <summary>
+    /// Identificar de qual classe veio a mensagem no log
+    /// </summary>
+    private readonly ILogger<ExceptionMiddleware> objLogger;
 
-    public ExceptionMiddleware(RequestDelegate next, ILogger<ExceptionMiddleware> logger)
+    public ExceptionMiddleware(RequestDelegate pNext, ILogger<ExceptionMiddleware> pLogger)
     {
-        _next = next;
-        _logger = logger;
+        objNext = pNext;
+        objLogger = pLogger;
     }
 
-    public async Task InvokeAsync(HttpContext context)
+    /// <summary>
+    /// Metodo que o ASP.NET chama automaticamente para cada requisição HTTP que chega na API
+    /// </summary>
+    /// <param name="pContext">objeto que contem tudo sobre a requisição</param>
+    /// <returns>Resposta do HTTP</returns>
+    public async Task InvokeAsync(HttpContext pContext)
     {
         try
         {
-            await _next(context);
+            await objNext(pContext);
         }
         catch (HttpRequestException ex)
         {
-            _logger.LogError(ex, "Erro ao consultar provedor de clima");
-            await WriteError(context, HttpStatusCode.BadGateway, "Provedor de clima indisponível. Tente novamente.");
+            objLogger.LogError(ex, "Erro ao consultar provedor de clima");
+            await WriteError(pContext, HttpStatusCode.BadGateway, "Provedor de clima indisponível. Tente novamente.");
         }
         catch (ArgumentException ex)
         {
-            await WriteError(context, HttpStatusCode.BadRequest, ex.Message);
+            await WriteError(pContext, HttpStatusCode.BadRequest, ex.Message);
         }
         catch (Exception ex)
         {
-            _logger.LogError(ex, "Erro interno inesperado");
-            await WriteError(context, HttpStatusCode.InternalServerError, "Erro interno. Tente novamente.");
+            objLogger.LogError(ex, "Erro interno inesperado");
+            await WriteError(pContext, HttpStatusCode.InternalServerError, "Erro interno. Tente novamente.");
         }
     }
 
-    private static Task WriteError(HttpContext context, HttpStatusCode status, string message)
+    /// <summary>
+    /// Metodo que escreve o erro ocorrido na requisição
+    /// </summary>
+    /// <param name="pContext">objeto que contem tudo sobre a requisição</param>
+    /// <param name="pStatus">Status da requisição</param>
+    /// <param name="pMessage">Mensagem de erro</param>
+    /// <returns>Retorna Erro</returns>
+    private static Task WriteError(HttpContext pContext, HttpStatusCode pStatus, string pMessage)
     {
-        context.Response.StatusCode = (int)status;
-        context.Response.ContentType = "application/json";
-        var body = JsonSerializer.Serialize(new { error = message });
-        return context.Response.WriteAsync(body);
+        pContext.Response.StatusCode = (int)pStatus;
+        pContext.Response.ContentType = "application/json";
+        string strBody = JsonSerializer.Serialize(new { error = pMessage });
+        return pContext.Response.WriteAsync(strBody);
     }
 }

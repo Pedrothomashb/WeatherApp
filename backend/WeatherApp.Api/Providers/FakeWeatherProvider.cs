@@ -6,10 +6,19 @@ namespace WeatherApp.Api.Providers;
 /// </summary>
 public class FakeWeatherProvider : IWeatherProvider
 {
-    private static readonly Random _rng = new();
+    /// <summary>
+    /// Instância do gerador de números aleatórios do .NET
+    /// </summary>
+    private static readonly Random objRng = new();
+    /// <summary>
+    /// Nome do provedor
+    /// </summary>
     public string Name => "FakeProvider";
 
-    private static readonly Dictionary<string, (decimal Lat, decimal Lon, decimal BaseTemp)> _cities = new(StringComparer.OrdinalIgnoreCase)
+    /// <summary>
+    /// Dicionario com os dados fake das cidades
+    /// </summary>
+    private static readonly Dictionary<string, (decimal Lat, decimal Lon, decimal BaseTemp)> dicCities = new(StringComparer.OrdinalIgnoreCase)
     {
         ["São Paulo"]   = (-23.55m, -46.63m, 22m),
         ["Curitiba"]    = (-25.43m, -49.27m, 18m),
@@ -21,36 +30,60 @@ public class FakeWeatherProvider : IWeatherProvider
         ["Salvador"]    = (-12.97m, -38.50m, 29m),
     };
 
-    private static readonly string[] _descriptions =
+    /// <summary>
+    /// Array de Descrições 
+    /// </summary>
+    private static readonly string[] strDescriptions =
         ["céu limpo", "poucas nuvens", "nuvens dispersas", "chuva leve", "nublado", "tempestade"];
 
-    public Task<WeatherData> GetByCity(string cityName, CancellationToken ct = default)
+    /// <summary>
+    /// Metodo que busca dados de clima pelo nome da cidade
+    /// </summary>
+    /// <param name="pCityName">Nome da cidade</param>
+    /// <param name="pCt">Cancellation Token</param>
+    /// <returns>Retona dados da cidade</returns>
+    public Task<WeatherData> GetByCity(string pCityName, CancellationToken pCt = default)
     {
-        var known = _cities.TryGetValue(cityName, out var info);
-        var baseTemp = known ? info.BaseTemp : 22m;
-        var lat = known ? info.Lat : (decimal)(_rng.NextDouble() * 30 - 15);
-        var lon = known ? info.Lon : (decimal)(_rng.NextDouble() * 70 - 55);
+        bool blnKnown = dicCities.TryGetValue(pCityName, out var info);
+        decimal decBaseTemp = blnKnown ? info.BaseTemp : 22m;
+        decimal decLat = blnKnown ? info.Lat : (decimal)(objRng.NextDouble() * 30 - 15);
+        decimal decLon = blnKnown ? info.Lon : (decimal)(objRng.NextDouble() * 70 - 55);
 
-        return Task.FromResult(BuildWeatherData(cityName, baseTemp, lat, lon));
+        return Task.FromResult(BuildWeatherData(pCityName, decBaseTemp, decLat, decLon));
     }
 
-    public Task<WeatherData> GetByCoordinates(decimal latitude, decimal longitude, CancellationToken ct = default)
+    /// <summary>
+    /// Retorna a cidade pelas coordenadas
+    /// </summary>
+    /// <param name="pLatitude">Latitude da cidade</param>
+    /// <param name="pLongitude">Longitude da acidade</param>
+    /// <param name="pCt">Cancellation Token</param>
+    /// <returns>Retorna os dados da cidade</returns>
+    public Task<WeatherData> GetByCoordinates(decimal pLatitude, decimal pLongitude, CancellationToken pCt = default)
     {
-        var closestCity = _cities
-            .OrderBy(c => Math.Abs((double)(c.Value.Lat - latitude)) + Math.Abs((double)(c.Value.Lon - longitude)))
+        KeyValuePair<string, (decimal Lat, decimal Lon, decimal BaseTemp)> objClosestCity = dicCities
+            .OrderBy(c => Math.Abs((double)(c.Value.Lat - pLatitude)) + Math.Abs((double)(c.Value.Lon - pLongitude)))
             .First();
 
-        return Task.FromResult(BuildWeatherData(closestCity.Key, closestCity.Value.BaseTemp, latitude, longitude));
+        return Task.FromResult(BuildWeatherData(objClosestCity.Key, objClosestCity.Value.BaseTemp, pLatitude, pLongitude));
     }
 
-    private WeatherData BuildWeatherData(string city, decimal baseTemp, decimal lat, decimal lon)
+    /// <summary>
+    /// Metodo auxiliar privado que monta o objeto WeatherData com dados simulados.
+    /// </summary>
+    /// <param name="pCity">Cidade</param>
+    /// <param name="pBaseTemp">Temperatura base</param>
+    /// <param name="pLat">Latitude</param>
+    /// <param name="pLon">Longitude</param>
+    /// <returns>Retorna dados montados</returns>
+    private WeatherData BuildWeatherData(string pCity, decimal pBaseTemp, decimal pLat, decimal pLon)
     {
-        var variation = (decimal)(_rng.NextDouble() * 6 - 3);
-        var temp = Math.Round(baseTemp + variation, 1);
-        var feelsLike = Math.Round(temp - (decimal)(_rng.NextDouble() * 3), 1);
-        var humidity = _rng.Next(40, 95);
-        var desc = _descriptions[_rng.Next(_descriptions.Length)];
+        decimal decVariation = (decimal)(objRng.NextDouble() * 6 - 3);
+        decimal decTemp = Math.Round(pBaseTemp + decVariation, 1);
+        decimal decFeelsLike = Math.Round(decTemp - (decimal)(objRng.NextDouble() * 3), 1);
+        int intHumidity = objRng.Next(40, 95);
+        string strDesc = strDescriptions[objRng.Next(strDescriptions.Length)];
 
-        return new WeatherData(city, temp, feelsLike, humidity, desc, lat, lon, Name);
+        return new WeatherData(pCity, decTemp, decFeelsLike, intHumidity, strDesc, pLat, pLon, Name);
     }
 }

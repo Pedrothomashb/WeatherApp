@@ -12,69 +12,94 @@ namespace WeatherApp.Api.Controllers;
 [Produces("application/json")]
 public class WeatherController : ControllerBase
 {
-    private readonly IWeatherService _service;
-    private readonly ILogger<WeatherController> _logger;
+    /// <summary>
+    /// Objeto de Serviço
+    /// </summary>
+    private readonly IWeatherService objService;
+    /// <summary>
+    /// Logger da classe Weather
+    /// </summary>
+    private readonly ILogger<WeatherController> objLogger;
 
-    public WeatherController(IWeatherService service, ILogger<WeatherController> logger)
+    public WeatherController(IWeatherService pService, ILogger<WeatherController> logger)
     {
-        _service = service;
-        _logger = logger;
+        objService = pService;
+        objLogger = logger;
     }
 
     /// <summary>
     /// Registra a temperatura atual de uma cidade pelo nome.
     /// </summary>
+    /// <param name="pRequest">Request da requisição</param>
+    /// <param name="pCt">Cancellation Token</param>
+    /// <returns>Retorna se consegiu registrar a cidade ou não</returns>
     [HttpPost("city")]
     [ProducesResponseType(typeof(TemperatureResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     [ProducesResponseType(StatusCodes.Status502BadGateway)]
     public async Task<IActionResult> RegisterByCity(
-        [FromBody] RegisterByCityRequest request,
-        CancellationToken ct)
+        [FromBody] RegisterByCityRequest pRequest,
+        CancellationToken pCt)
     {
-        if (string.IsNullOrWhiteSpace(request.CityName))
+        if (string.IsNullOrWhiteSpace(pRequest.CityName))
+        {
             return BadRequest(new { error = "CityName é obrigatório." });
+        }
 
-        var result = await _service.RegisterByCity(request.CityName, ct);
-        return Ok(result);
+        TemperatureResponse objResult = await objService.RegisterByCity(pRequest.CityName, pCt);
+        return Ok(objResult);
     }
 
     /// <summary>
     /// Registra a temperatura atual pelas coordenadas geográficas.
     /// </summary>
+    /// <param name="pRequest">Request da requisição</param>
+    /// <param name="pCt">Cancellation Token</param>
+    /// <returns>Retorna se conseguiu registrar a temperatura atual</returns>
     [HttpPost("coordinates")]
     [ProducesResponseType(typeof(TemperatureResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> RegisterByCoordinates(
-        [FromBody] RegisterByCoordinatesRequest request,
-        CancellationToken ct)
+        [FromBody] RegisterByCoordinatesRequest pRequest,
+        CancellationToken pCt)
     {
-        if (request.Latitude < -90 || request.Latitude > 90)
+        if (pRequest.Latitude < -90 || pRequest.Latitude > 90)
+        {
             return BadRequest(new { error = "Latitude inválida. Deve estar entre -90 e 90." });
+        }
 
-        if (request.Longitude < -180 || request.Longitude > 180)
+        if (pRequest.Longitude < -180 || pRequest.Longitude > 180)
+        {
             return BadRequest(new { error = "Longitude inválida. Deve estar entre -180 e 180." });
+        }
 
-        var result = await _service.RegisterByCoordinates(request.Latitude, request.Longitude, ct);
-        return Ok(result);
+        TemperatureResponse objResult = await objService.RegisterByCoordinates(pRequest.Latitude, pRequest.Longitude, pCt);
+        return Ok(objResult);
     }
 
     /// <summary>
     /// Retorna o histórico de temperaturas dos últimos 30 dias para uma cidade ou coordenada.
     /// </summary>
+    /// <param name="pLon">Longitude</param>
+    /// <param name="pLat">Latitude</param>
+    /// <param name="pCity">Cidade</param>
+    /// <param name="pCt">Cancellation Token</param>
+    /// <returns>Retorna o historico de cidades pesquisadas</returns>
     [HttpGet("history")]
     [ProducesResponseType(typeof(HistoryResponse), StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<IActionResult> GetHistory(
-        [FromQuery] string? city,
-        [FromQuery] decimal? lat,
-        [FromQuery] decimal? lon,
-        CancellationToken ct)
+        [FromQuery] string? pCity,
+        [FromQuery] decimal? pLat,
+        [FromQuery] decimal? pLon,
+        CancellationToken pCt)
     {
-        if (string.IsNullOrWhiteSpace(city) && (!lat.HasValue || !lon.HasValue))
+        if (string.IsNullOrWhiteSpace(pCity) && (!pLat.HasValue || !pLon.HasValue))
+        {
             return BadRequest(new { error = "Informe city ou lat+lon." });
+        }
 
-        var result = await _service.GetHistory(city, lat, lon, ct);
-        return Ok(result);
+        HistoryResponse objResult = await objService.GetHistory(pCity, pLat, pLon, pCt);
+        return Ok(objResult);
     }
 }
